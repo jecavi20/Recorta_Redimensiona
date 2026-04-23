@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Captura Pantalla Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            Captura Pantalla desde la Web
+            <small>Herramienta de recortes de pantalla desde el navegador</small>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="tool-btn" id="themeToggle" aria-label="Cambiar tema">🌙 Tema</button>
+          <button class="tool-btn primary" id="captureBtn">Nueva captura</button>
+          <button class="tool-btn" id="downloadBtn" disabled>Guardar recorte</button>
+        </div>
+      </header>
+      <main class="layout">
+        <aside class="sidebar">
+          <section class="section">
+            <h2>Salida</h2>
+            <p>Elige el tamaño final y el formato de la imagen exportada.</p>
+            <div class="group">
+              <div class="inline-2">
+                <label>
+                  Ancho
+                  <input type="number" id="targetWidth" value="800" min="1" />
+                </label>
+                <label>
+                  Alto
+                  <input type="number" id="targetHeight" value="600" min="1" />
+                </label>
+              </div>
+              <label>
+                Formato
+                <select id="formatSelect">
+                  <option value="image/png">PNG</option>
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/webp">WEBP</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Compresión</h2>
+            <p>Ajusta la calidad del archivo final. Menor calidad reduce más el peso en JPEG y WEBP.</p>
+            <div class="slider-box">
+              <div class="slider-head">
+                <span>Calidad de exportación</span>
+                <span class="badge" id="qualityBadge">90%</span>
+              </div>
+              <input type="range" id="qualityRange" min="10" max="100" value="90" step="1" />
+              <div class="hint" id="compressionHint">Alta calidad y compresión ligera.</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Estado</h2>
+            <div class="status" id="statusBox">Pulsa “Nueva captura” para pedir permiso de pantalla y empezar.</div>
+          </section>
+        </aside>
+
+        <section class="workspace">
+          <div class="mini-toolbar">
+            <div class="mini-left">
+              <div class="pill"><span class="dot"></span><span id="selectionModeText">Esperando captura</span></div>
+              <div class="pill" id="formatInfo">PNG</div>
+            </div>
+            <div class="mini-right">
+              <button class="tool-btn" id="resetBtn" disabled>Limpiar selección</button>
+            </div>
+          </div>
+
+          <div class="canvas-stage">
+            <div class="canvas-shell">
+              <canvas id="screenCanvas"></canvas>
+            </div>
+          </div>
+
+          <div class="bottombar">
+            <div class="metric"><small>Captura original</small><strong id="originalInfo">Sin captura</strong></div>
+            <div class="metric"><small>Selección</small><strong id="selectionInfo">Sin selección</strong></div>
+            <div class="metric"><small>Salida final</small><strong id="outputInfo">800 × 600</strong></div>
+            <div class="metric"><small>Compresión</small><strong id="compressionInfo">90% de calidad</strong></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <video id="captureVideo" class="hidden-video" autoplay playsinline></video>
+  <script src="js/funtions.js"></script>
+</body>
+</html>
