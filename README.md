@@ -20,8 +20,8 @@
 
 
 ## 📌 Instalación
-1. Clonar el repositorio
-2. Abrir en el navegador o ejecutar el proyecto
+1. Clonar o descargar el repositorio
+2. Abrir el archivo index.html en el navegador
 
 ## 📌 Autor
 - jecavi
